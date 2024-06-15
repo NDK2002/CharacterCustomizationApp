@@ -1,38 +1,227 @@
-.App {
-  text-align: center;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --text-color: #E6EDF2;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: linear-gradient(to right, #141E30, #243B55);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-.App-header {
-  background-color: #282c34;
+.container {
+  justify-content: center;
   min-height: 100vh;
+  position: relative;
+}
+
+.App {
+  background: rgba(4, 0, 26, 0.3);
+  border-radius: 20px;
+  height: 85%;
+  margin: 10px auto;
+  padding: 10px;
+  max-width: 1200px;
+  max-height: 1200px;
+  min-width: 300px;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.nav-group {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* margin: 10px; */
+  background: rgba(4, 0, 26, 0.6);
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  width: 8em;
+}
+
+.nav-item {
+  margin-top: 20px;
+  list-style: none;
+  color: var(--text-color);
+  position: relative;
+  padding: 5px 10px;
+  text-align: center;
+
+}
+
+.nav-item:hover {
+  cursor: pointer;
+}
+
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #02AAB0, #00CDAC);
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: -1;
+  transition: transform 0.5s;
+}
+
+.nav-item:hover::before {
+  transform: scaleX(1);
+}
+
+.avatar-group,
+.showing-avatar {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.avatar-group {
+  flex-wrap: wrap;
+  font-size: 1.5rem;
+  height: 90%;
+  width: 80%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.showing-avatar {
+  align-items: center;
+  min-width: 300px;
+  width: 40%;
+}
+
+.avatar-wrapper {
+  background-color: #fff;
+  border: 15px solid #2b304b;
+  border-radius: 30px;
+  display: inline-block;
+  height: 300px;
+  width: 300px;
+  min-height: 270px;
+  min-width: 270px;
+  position: relative;
+}
+
+.avatar {
+  align-items: center;
+  display: flex;
+  height: 85%;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.avatar img {
+  align-self: center;
+  height: 100%;
+  width: 100%;
+  overflow: clip;
+  overflow-clip-margin: content-box;
+}
+
+.btn-center {
+  display: flex;
+  gap: 2rem;
+  height: 15%;
+  justify-content: center;
+}
+
+.button {
+  align-self: center;
+  background-color: #141E30;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.showing-categories {
+  display: flex;
+  flex-direction: row;
+  flex: 60% 1;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  margin-bottom: .2em;
+  min-height: 300px;
+  min-width: 300px;
+  width: 50%;
+}
+
+.display-categories {
+  border-radius: 10px;
+  display: flex;
+  flex: 85% 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: auto;
+  margin: 5px 0;
+  max-width: 700px;
+  position: relative;
+  width: 100%;
+}
+
+.display-categories h2 {
+  color: #fff;
+  display: flex;
+  font-size: .8em;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+#list-item {
+  border-radius: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 10px 0;
+  max-width: 680px;
+  position: absolute;
+  top: 50px;
+  /* width: 100%; */
+}
+
+.item {
+  cursor: pointer;
+  background-color: #ccc;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .151);
+  height: 70px;
+  width: 70px;
+  overflow: hidden;
+  position: relative;
+}
+
+.img-center {
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
 }
