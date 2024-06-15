@@ -23,11 +23,10 @@ export default function Game() {
   // );
   const [selectedName, setSelectedName] = useState("Body");
   const navItems = ["Body", "Face", "Hairs", "Clothes", "Accessories"];
-  const navRefs = useRef(navItems.map(() => React.createRef()));
+  // const navRefs = useRef(navItems.map(() => React.createRef()));
 
   const handleClick = (name) => {
     setSelectedName(name);
-    console.log(name);
   };
   return (
     <div className="App">
@@ -37,7 +36,7 @@ export default function Game() {
           <Nav
             key={item}
             name={item}
-            ref={navRefs.current[index]}
+            // ref={navRefs.current[index]}
             handleClick={() => handleClick(item)}
           />
         ))}

@@ -2,8 +2,7 @@ import React, { forwardRef, useRef, useState } from "react";
 import Items from "./Items";
 import Images from "./Images";
 
-function Avatar({ link }, ref) {
-  const [nameLink, setNameLink] = useState("Body");
+function Avatar({ link }) {
   const nameLinkRef = useRef();
 
   return (
@@ -21,7 +20,7 @@ function Avatar({ link }, ref) {
       </div>
       <div className="showing-categories">
         <div className="display-categories">
-          <h2 ref={nameLinkRef}>{link}</h2>
+          <h2>{link}</h2>
           <div id="list-item">
             <Images image="character/body/1.png" />
             <Images image="character/body/2.png" />
@@ -47,4 +46,4 @@ function Avatar({ link }, ref) {
   );
 }
 
-export default forwardRef(Avatar);
+export default Avatar;
