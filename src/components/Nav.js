@@ -1,16 +1,21 @@
-import React, { forwardRef, useImperativeHandle } from "react";
+import React, { useState } from "react";
 
-function Nav({ name, handleClick }, ref) {
-  useImperativeHandle(ref, () => {
-    return {
-      name,
-    };
-  });
+function Nav({ name, handleClick, isActive }) {
+  const [activeLink, setActiveLink] = useState(false);
+
+  const handleNavItemClick = () => {
+    setActiveLink((prevActiveLink) => !prevActiveLink);
+  };
   return (
-    <li className="nav-item" onClick={handleClick}>
-      {name}
+    <li
+      onClick={handleClick}
+      className={`nav-item ${isActive ? "active" : ""}`}
+    >
+      <span className="title" onClick={handleNavItemClick}>
+        {name}
+      </span>
     </li>
   );
 }
 
-export default forwardRef(Nav);
+export default Nav;

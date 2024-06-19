@@ -1,9 +1,29 @@
-import React, { forwardRef, useRef, useState } from "react";
-import Items from "./Items";
+import React, { useEffect, useState } from "react";
+import { getAllPart, partItems } from "./Items";
 import Images from "./Images";
 
 function Avatar({ link }) {
-  const nameLinkRef = useRef();
+  const [parts, setParts] = useState([]);
+
+  useEffect(() => {
+    partItems.length = 0;
+    getAllPart();
+    setParts([...partItems]);
+  }, []);
+
+  const getClassification = (classify) => {
+    switch (classify) {
+      case "Clothing (L1)":
+        return "clothing_1";
+      case "Clothing (L2)":
+        return "clothing_2";
+      case "Clothing (L3)":
+        return "clothing_3";
+      default:
+        return link.toLowerCase();
+    }
+  };
+  const classification = getClassification(link);
 
   return (
     <div className="avatar-group">
@@ -22,23 +42,11 @@ function Avatar({ link }) {
         <div className="display-categories">
           <h2>{link}</h2>
           <div id="list-item">
-            <Images image="character/body/1.png" />
-            <Images image="character/body/2.png" />
-            <Images image="character/body/3.png" />
-            <Images image="character/body/4.png" />
-            <Images image="character/body/5.png" />
-            <Images image="character/body/6.png" />
-            <Images image="character/body/7.png" />
-            <Images image="character/body/8.png" />
-            <Images image="character/body/9.png" />
-            <Images image="character/body/10.png" />
-            <Images image="character/body/11.png" />
-            <Images image="character/body/12.png" />
-            <Images image="character/body/13.png" />
-            <Images image="character/body/14.png" />
-            <Images image="character/body/15.png" />
-            <Images image="character/body/16.png" />
-            <Images image="character/body/17.png" />
+            {parts
+              .filter((item) => item.classify === classification)
+              .map((item) => (
+                <Images key={item.key} image={item.link} />
+              ))}
           </div>
         </div>
       </div>
