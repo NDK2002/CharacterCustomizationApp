@@ -6,11 +6,14 @@ export default function Game() {
   const [selectedName, setSelectedName] = useState("Body");
   const navItems = [
     "Body",
-    "Eyes",
     "Hairs",
-    "Mouths",
+    "Eyes",
     "Eyebrows",
+    "Mouths",
     "Glasses",
+    "Hats",
+    "Earrings",
+    "Neckwear",
     "Clothing (L1)",
     "Clothing (L2)",
     "Clothing (L3)",
