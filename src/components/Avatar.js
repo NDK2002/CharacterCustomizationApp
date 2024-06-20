@@ -151,6 +151,7 @@ function Avatar({ link }) {
               />
             ))}
           </div>
+
           <div className="btn-center">
             <button className="button" onClick={randomize}>
               Randomize!
