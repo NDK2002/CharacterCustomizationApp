@@ -16,7 +16,7 @@ export const total = {
   facial_hair: 17,
 };
 
-const partDetails = {
+export const partDetails = {
   body: { origin: "character/body/", z_index: 0 },
   eyes: { origin: "character/eyes/", z_index: 4 },
   hairs: { origin: "character/hair/", z_index: 6 },
@@ -61,6 +61,3 @@ export function getAllPart() {
     }
   }
 }
-
-getAllPart();
-console.log(partItems);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { total, getAllPart, partItems } from "./Items";
+import { total, getAllPart, partItems, partDetails } from "./Items";
 import Images from "./Images";
 
 function Avatar({ link }) {
@@ -40,80 +40,20 @@ function Avatar({ link }) {
   };
 
   const randomize = () => {
-    const origin = "character/";
     setSelectedImage([]);
-    const partsConfig = [
-      { classify: "body", count: total.body, zIndex: 0, folder: "body" },
-      { classify: "hairs", count: total.hairs, zIndex: 1, folder: "hair" },
-      { classify: "eyes", count: total.eyes, zIndex: 2, folder: "eyes" },
-      {
-        classify: "eyebrows",
-        count: total.eyebrows,
-        zIndex: 3,
-        folder: "eyebrows",
-      },
-      { classify: "mouths", count: total.mouths, zIndex: 4, folder: "mouths" },
-      {
-        classify: "glasses",
-        count: total.glasses,
-        zIndex: 5,
-        folder: "accessories/glasses",
-      },
-      {
-        classify: "hats",
-        count: total.hats,
-        zIndex: 6,
-        folder: "accessories/hats",
-      },
-      {
-        classify: "earrings",
-        count: total.earrings,
-        zIndex: 7,
-        folder: "accessories/earrings",
-      },
-      {
-        classify: "neckwear",
-        count: total.neckwear,
-        zIndex: 8,
-        folder: "accessories/neckwear",
-      },
-      {
-        classify: "layer_1",
-        count: total.layer_1,
-        zIndex: 9,
-        folder: "clothes/layer_1",
-      },
-      {
-        classify: "layer2",
-        count: total.layer_2,
-        zIndex: 10,
-        folder: "clothes/layer_2",
-      },
-      {
-        classify: "layer3",
-        count: total.layer_3,
-        zIndex: 11,
-        folder: "clothes/layer_3",
-      },
-      {
-        classify: "facial_hair",
-        count: total.facial_hair,
-        zIndex: 12,
-        folder: "facial_hair",
-      },
-    ];
-
-    const randomParts = partsConfig.map((part) => {
-      const randomIndex = Math.floor(Math.random() * part.count) + 1;
+    const partsConfig = Object.keys(total).map((part) => {
+      const count = total[part];
+      const details = partDetails[part];
+      const randomIndex = Math.floor(Math.random() * count) + 1;
       return {
-        classify: part.classify,
-        key: `${part.classify}_${randomIndex}`,
-        link: `character/${part.folder}/${randomIndex}.png`,
-        zIndex: part.zIndex,
+        classify: details.classify || part,
+        key: `${part}_${randomIndex}`,
+        link: `${details.origin}${randomIndex}.png`,
+        zIndex: details.z_index,
       };
     });
 
-    setSelectedImage(randomParts);
+    setSelectedImage(partsConfig);
   };
 
   const applyToAvatar = (key) => {

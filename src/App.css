@@ -328,6 +328,7 @@ body {
     flex-direction: row;
     justify-content: center;
     margin-right: 10svh;
+    margin-top: -10%;
   }
 
   .avatar-wrapper {
